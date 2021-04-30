@@ -34,8 +34,8 @@ def plot_model_history(model_history):
     plt.show()
 
 # Define data generators
-train_dir = 'data_sad/train'
-val_dir = 'data_sad/test'
+train_dir = 'data/train'
+val_dir = 'data/test'
 
 num_train = 18323
 num_val = 4583
