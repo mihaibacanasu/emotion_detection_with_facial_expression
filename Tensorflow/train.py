@@ -14,7 +14,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 
  
 def plot_model_history(history):
-    # Plot training & validation loss values
+
     plt.plot(history.history['loss'])
     plt.plot(history.history['val_loss'])
     plt.title('Model loss')
@@ -24,7 +24,6 @@ def plot_model_history(history):
     plt.savefig('model_data_loss.png')
     plt.show()
 
-    # Plot training & validation accuracy values
     plt.plot(history.history['accuracy'])
     plt.plot(history.history['val_accuracy'])
     plt.title('Model accuracy')
@@ -34,7 +33,7 @@ def plot_model_history(history):
     plt.savefig('model_data_accuracy.png')
     plt.show()
 
-# Define data generators
+
 train_dir = 'data/train'
 val_dir = 'data/test'
 
@@ -79,7 +78,6 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
 ])
 
-# Compile the model
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
@@ -99,6 +97,7 @@ model_info = model.fit(train_generator,
           validation_data=validation_generator,
           validation_steps=validation_generator.n // batch_size)
 
-model.save_weights('model1.h5')
+
+model.save_weights('model1_data.h5')
 plot_model_history(model_info)
 

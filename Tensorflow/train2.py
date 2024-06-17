@@ -17,7 +17,7 @@ def plot_model_history(model_history):
     Plot Accuracy and Loss curves given the model_history
     """
     fig, axs = plt.subplots(1,2,figsize=(15,5))
-    # summarize history for accuracy
+    
     axs[0].plot(range(1,len(model_history.history['acc'])+1),model_history.history['acc'])
     axs[0].plot(range(1,len(model_history.history['val_acc'])+1),model_history.history['val_acc'])
     axs[0].set_title('Model Accuracy')
@@ -25,7 +25,7 @@ def plot_model_history(model_history):
     axs[0].set_xlabel('Epoch')
     axs[0].set_xticks(np.arange(1,len(model_history.history['acc'])+1),len(model_history.history['acc'])/10)
     axs[0].legend(['train', 'val'], loc='best')
-    # summarize history for loss
+ 
     axs[1].plot(range(1,len(model_history.history['loss'])+1),model_history.history['loss'])
     axs[1].plot(range(1,len(model_history.history['val_loss'])+1),model_history.history['val_loss'])
     axs[1].set_title('Model Loss')
@@ -36,7 +36,6 @@ def plot_model_history(model_history):
     fig.savefig('plot.png')
     plt.show()
 
-# Define data generators
 train_dir = 'data/train'
 val_dir = 'data/test'
 
@@ -83,7 +82,6 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
 ])
 
-# Compile the model
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
